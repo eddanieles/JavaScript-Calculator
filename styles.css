@@ -21,6 +21,7 @@ p button {
   flex: 1 1 0;
   height: 50px;
   background-color: gainsboro;
+  border-radius: 5px;
 }
 
 .orangeButtons {
