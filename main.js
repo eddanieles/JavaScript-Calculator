@@ -44,6 +44,7 @@ var clear = document.querySelector("#clear");
 clear.addEventListener("click", function(event){
   var value = 0;
   display.value = value;
+  displayNumbers = [];
 })
 
 var add = document.querySelector("#plus");
