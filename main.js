@@ -1,21 +1,15 @@
 
 var numbers = [
-{
-    id: "zero",
-    value: 0
-},
-{
-    id: "one",
-    value: 1
-},
-{
-    id: "two",
-    value: 2
-},
-{
-    id: "three",
-    value: 3
-}
+  {id: "seven", value: 7},
+  {id: "eight", value: 8},
+  {id: "nine", value: 9},
+  {id: "four", value: 4},
+  {id: "five", value: 5},
+  {id: "six", value: 6},
+  {id: "one", value: 1},
+  {id: "two", value: 2},
+  {id: "three", value: 3},
+  {id: "zero", value: 0}
 ];
 
 var numberStorage = [];
@@ -25,37 +19,8 @@ var displayJoin = displayNumbers.join('');
 var inputtedNumber = parseFloat(displayJoin);
 var display = document.querySelector("#display");
 
-var clear = document.querySelector("#clear");
-clear.addEventListener("click", function(event){
-  var value = 0;
-  display.value = value;
-})
 
-var zero = document.querySelector("#zero");
-zero.addEventListener("click", function(event){
-  var value0 = 0;
-  putNumberInto(value0);
-})
-
-
-var one = document.querySelector("#one");
-one.addEventListener("click", function(event){
-  var value1 = 1;
-  putNumberInto(value1);
-})
-
-
-var two = document.querySelector("#two");
-two.addEventListener("click", function(event){
-  var value2 = 2;
-  putNumberInto(value2);
-})
-
-var three = document.querySelector("#three");
-three.addEventListener("click", function(event){
-  var value3 = 3;
-  putNumberInto(value3);
-})
+var numberButtons = document.querySelectorAll(".numberButton");
 
 function putNumberInto(value){
   displayNumbers.push(value);
@@ -63,6 +28,23 @@ function putNumberInto(value){
   var inputtedNumber = parseFloat(displayJoin);
   display.value = inputtedNumber;
 }
+
+function numberListener(number) {
+    return function(){
+      putNumberInto(number);
+    }
+}
+
+for (var i = 0; i <  10; i++) {
+  numberButtons[i].addEventListener("click", numberListener(numbers[i].value));
+}
+
+
+var clear = document.querySelector("#clear");
+clear.addEventListener("click", function(event){
+  var value = 0;
+  display.value = value;
+})
 
 var add = document.querySelector("#plus");
 add.addEventListener("click", function(event){
