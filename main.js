@@ -58,8 +58,10 @@ var equal = document.querySelector("#equal");
 equal.addEventListener("click", function(event){
   numberStorage.push(display.value);
   displayNumbers = [];
-
-  var value = parseFloat(numberStorage[0]) + parseFloat(numberStorage[1]);
+  var value = 0;
+  for (var j = 0; j < numberStorage.length; j++){
+     value = value + parseFloat(numberStorage[j]);
+  }
   display.value = value;
   numberStorage = [];
 })
