@@ -45,17 +45,21 @@ clear.addEventListener("click", function(event){
   var value = 0;
   display.value = value;
   displayNumbers = [];
+  numberStorage = [];
 })
 
 var add = document.querySelector("#plus");
 add.addEventListener("click", function(event){
   numberStorage.push(display.value);
+  displayNumbers = [];
 })
 
 var equal = document.querySelector("#equal");
 equal.addEventListener("click", function(event){
+  numberStorage.push(display.value);
+  displayNumbers = [];
 
   var value = parseFloat(numberStorage[0]) + parseFloat(numberStorage[1]);
   display.value = value;
-  console.log(value);
+  numberStorage = [];
 })
