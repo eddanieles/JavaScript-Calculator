@@ -83,14 +83,6 @@ operationsObject = {
 
 var result;
 
-/* addition works
-var add = document.querySelector("#plus");
-add.addEventListener("click", function(event){
-  numberStorage.push(display.value);
-  displayNumbers = [];
-})
-*/
-
 var equal = document.querySelector("#equal");
 equal.addEventListener("click", function(event){
   numberStorage.push(display.value);
