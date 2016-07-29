@@ -1,4 +1,3 @@
-
 var numbers = [
   {id: "seven", value: 7},
   {id: "eight", value: 8},
@@ -40,29 +39,88 @@ for (var i = 0; i <  numbers.length; i++) {
   numberButtons[i].addEventListener("click", numberListener(numbers[i].value));
 }
 
+//end of numberStorage
+
+var operations = [
+  {id: "divide", value: "/"},
+  {id: "multiply", value: "*"},
+  {id: "minus", value: "-"},
+  {id: "plus", value: "+"}
+]
+
+var operationsStorage = [];
+
+function putOperationsInto(value) {
+  operationsStorage.push(value);
+}
+
+var operationButtons = document.querySelectorAll(".operationButton");
+
+function operationsLister(operation) {
+  return function(){
+    numberStorage.push(display.value);
+    displayNumbers = [];
+    putOperationsInto(operation);
+    console.log(numberStorage);
+    console.log(operationsStorage);
+  }
+}
+
+
+for (var k = 0; k < operations.length; k++) {
+  operationButtons[k].addEventListener("click", operationsLister(operations[k].value));
+}
+
+//end of operationsStorage
+
+//start of calculation
+operationsObject = {
+  "+":function(num1, num2){return num1 + num2},
+  "-":function(num1, num2){return num1 - num2},
+  "*":function(num1, num2){return num1 * num2},
+  "/":function(num1, num2){return num1 / num2}
+}
+
+var result;
+
+/* addition works
+var add = document.querySelector("#plus");
+add.addEventListener("click", function(event){
+  numberStorage.push(display.value);
+  displayNumbers = [];
+})
+*/
+
+var equal = document.querySelector("#equal");
+equal.addEventListener("click", function(event){
+  numberStorage.push(display.value);
+  console.log(numberStorage);
+  while (numberStorage.length > 1) {
+    var num1 = parseFloat(numberStorage[0]);
+    var num2 = parseFloat(numberStorage[1]);
+
+    console.log(num1, operationsStorage[0], num2);
+
+    result = operationsObject[operationsStorage[0]](num1, num2);
+    operationsStorage.shift();
+    numberStorage.shift();
+    numberStorage[0] = result;
+
+    console.log(result);
+
+  }
+  displayNumbers = [];
+  display.value = result;
+  numberStorage = [];
+  operationsStorage = [];
+})
+
+//end of calculation
 
 var clear = document.querySelector("#clear");
 clear.addEventListener("click", function(event){
   var value = 0;
   display.value = value;
   displayNumbers = [];
-  numberStorage = [];
-})
-
-var add = document.querySelector("#plus");
-add.addEventListener("click", function(event){
-  numberStorage.push(display.value);
-  displayNumbers = [];
-})
-
-var equal = document.querySelector("#equal");
-equal.addEventListener("click", function(event){
-  numberStorage.push(display.value);
-  displayNumbers = [];
-  var value = 0;
-  for (var j = 0; j < numberStorage.length; j++){
-     value = value + parseFloat(numberStorage[j]);
-  }
-  display.value = value;
   numberStorage = [];
 })
