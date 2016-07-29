@@ -84,14 +84,6 @@ add.addEventListener("click", function(event){
 })
 */
 
-var clear = document.querySelector("#clear");
-clear.addEventListener("click", function(event){
-  var value = 0;
-  display.value = value;
-  displayNumbers = [];
-  numberStorage = [];
-})
-
 var equal = document.querySelector("#equal");
 equal.addEventListener("click", function(event){
   numberStorage.push(display.value);
@@ -101,5 +93,14 @@ equal.addEventListener("click", function(event){
      value = value + parseFloat(numberStorage[j]);
   }
   display.value = value;
+  numberStorage = [];
+})
+
+
+var clear = document.querySelector("#clear");
+clear.addEventListener("click", function(event){
+  var value = 0;
+  display.value = value;
+  displayNumbers = [];
   numberStorage = [];
 })
