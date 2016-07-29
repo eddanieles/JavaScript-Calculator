@@ -40,6 +40,36 @@ for (var i = 0; i <  numbers.length; i++) {
   numberButtons[i].addEventListener("click", numberListener(numbers[i].value));
 }
 
+// end of displaying the numbers
+
+var operations = [
+  {id: "divide", value: "/"},
+  {id: "multiply", value: "*"},
+  {id: "minus", value: "-"},
+  {id: "plus", value: "+"}
+]
+
+var operationsStorage = [];
+
+function putOperationsInto(value) {
+  operationsStorage.push(value);
+}
+
+var operationButtons = document.querySelectorAll(".operationButton");
+
+function operationsLister(operation) {
+  return function(){
+    putOperationsInto(operation);
+    console.log(operationsStorage);
+  }
+}
+
+
+for (var k = 0; k < operations.length; k++) {
+  operationButtons[k].addEventListener("click", operationsLister(operations[k].value));
+}
+
+//end of operationsStorage
 
 var clear = document.querySelector("#clear");
 clear.addEventListener("click", function(event){
