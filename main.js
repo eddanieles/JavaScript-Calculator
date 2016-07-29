@@ -9,7 +9,8 @@ var numbers = [
   {id: "one", value: 1},
   {id: "two", value: 2},
   {id: "three", value: 3},
-  {id: "zero", value: 0}
+  {id: "zero", value: 0},
+  {id: ".", value: "."}
 ];
 
 var numberStorage = [];
@@ -35,7 +36,7 @@ function numberListener(number) {
     }
 }
 
-for (var i = 0; i <  10; i++) {
+for (var i = 0; i <  numbers.length; i++) {
   numberButtons[i].addEventListener("click", numberListener(numbers[i].value));
 }
 
