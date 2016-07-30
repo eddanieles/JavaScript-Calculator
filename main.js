@@ -94,6 +94,7 @@ equal.addEventListener("click", function(event){
   console.log(numberStorage);
   console.log(storage);
 
+/*following without order of operations
   while (numberStorage.length > 1) {
     var num1 = parseFloat(numberStorage[0]);
     var num2 = parseFloat(numberStorage[1]);
@@ -106,6 +107,41 @@ equal.addEventListener("click", function(event){
     numberStorage[0] = result;
 
   }
+*/
+
+    for (i = 0; i < storage.length; i++) {
+      if (storage[i] === "*" || storage[i] === "/") {
+        var num1 = parseFloat(storage[i-1]);
+        var num2 = parseFloat(storage[i+1]);
+        placeholder = operationsObject[storage[i]](num1, num2);
+        storage[i-1] = "";
+        storage[i] ="";
+        storage[i+1] = placeholder;
+        //storage.splice(i, 2);
+        console.log(storage);
+      }
+    }
+
+    storage = storage.filter(v => v != "");
+    console.log(storage);
+
+
+    for (j = 0; j < storage.length; j++) {
+      if (storage[j] === "+" || storage[j] === "-") {
+        var num1 = parseFloat(storage[j-1]);
+        var num2 = parseFloat(storage[j+1]);
+        placeholder2 = operationsObject[storage[j]](num1, num2);
+        storage[j-1] = "";
+        storage[j] ="";
+        storage[j+1] = placeholder2;
+        console.log(storage);
+      }
+    }
+
+    storage = storage.filter(v => v != "");
+    console.log(storage);
+
+  result = storage[0];
 
   console.log(result);
   displayNumbers = [];
