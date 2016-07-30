@@ -40,6 +40,7 @@ for (var i = 0; i <  numbers.length; i++) {
 }
 
 //end of numberStorage
+var storage = [];
 
 var operations = [
   {id: "divide", value: "/"},
@@ -52,6 +53,7 @@ var operationsStorage = [];
 
 function putOperationsInto(value) {
   operationsStorage.push(value);
+  storage.push(value);
 }
 
 var operationButtons = document.querySelectorAll(".operationButton");
@@ -59,10 +61,12 @@ var operationButtons = document.querySelectorAll(".operationButton");
 function operationsLister(operation) {
   return function(){
     numberStorage.push(display.value);
+    storage.push(display.value);
     displayNumbers = [];
     putOperationsInto(operation);
     console.log(numberStorage);
     console.log(operationsStorage);
+    console.log(storage);
   }
 }
 
@@ -86,25 +90,29 @@ var result;
 var equal = document.querySelector("#equal");
 equal.addEventListener("click", function(event){
   numberStorage.push(display.value);
+  storage.push(display.value);
   console.log(numberStorage);
+  console.log(storage);
+
   while (numberStorage.length > 1) {
     var num1 = parseFloat(numberStorage[0]);
     var num2 = parseFloat(numberStorage[1]);
 
-    console.log(num1, operationsStorage[0], num2);
+    // console.log(num1, operationsStorage[0], num2);
 
     result = operationsObject[operationsStorage[0]](num1, num2);
     operationsStorage.shift();
     numberStorage.shift();
     numberStorage[0] = result;
 
-    console.log(result);
-
   }
+
+  console.log(result);
   displayNumbers = [];
   display.value = result;
   numberStorage = [];
   operationsStorage = [];
+  storage = [];
 })
 
 //end of calculation
@@ -115,4 +123,5 @@ clear.addEventListener("click", function(event){
   display.value = value;
   displayNumbers = [];
   numberStorage = [];
+  storage = [];
 })
