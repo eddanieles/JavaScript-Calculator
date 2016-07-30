@@ -77,72 +77,86 @@ for (var k = 0; k < operations.length; k++) {
 
 //end of operationsStorage
 
-//start of calculation
+
 operationsObject = {
   "+":function(num1, num2){return num1 + num2},
   "-":function(num1, num2){return num1 - num2},
   "*":function(num1, num2){return num1 * num2},
-  "/":function(num1, num2){return num1 / num2}
+  "/":function(num1, num2){return num1 / num2},
+  "^":function(num1, num2){return Math.pow(num1, num2)}
 }
 
-var result;
+function placeholderFunction(array) {
+  var num1 = parseFloat(array[i-1]);
+  var num2 = parseFloat(array[i+1]);
+  placeholder = operationsObject[array[i]](num1, num2);
+  array[i-1] = "";
+  array[i] ="";
+  array[i+1] = placeholder;
+  console.log(array);
+}
+
+function displaystorageFunction(array) {
+  storage = array.filter(v => v != "");
+  console.log(storage);
+  return storage;
+}
+
+function exponents(array){
+  for (i = 0; i < array.length; i++) {
+    if (array[i] === "^") {
+      placeholderFunction(array);
+    }
+  }
+  displaystorageFunction(array);
+}
+
+function multiply_divide(array){
+  for (i = 0; i < array.length; i++) {
+    if (array[i] === "*" || array[i] === "/") {
+      placeholderFunction(array);
+    }
+  }
+  displaystorageFunction(array);
+}
+
+function addition_subtraction(array){
+  for (i = 0; i < array.length; i++) {
+    if (array[i] === "+" || array[i] === "-") {
+      placeholderFunction(array);
+    }
+  }
+  displaystorageFunction(array);
+}
+
+/* won't work because the array won't get smaller when the next else if performs
+for (var i = 0; i < array.length; i++) {
+  if (array[i] === "^"){
+    placeholderFunction(array);
+  }
+  else if (array[i] === "*" || array[i] === "/") {
+    placeholderFunction(array);
+  }
+  else if (array[i] === "+" || array[i] === "-") {
+    placeholderFunction(array);
+  }
+}
+*/
+
 
 var equal = document.querySelector("#equal");
 equal.addEventListener("click", function(event){
   numberStorage.push(display.value);
   storage.push(display.value);
-  console.log(numberStorage);
   console.log(storage);
 
-/*following without order of operations
-  while (numberStorage.length > 1) {
-    var num1 = parseFloat(numberStorage[0]);
-    var num2 = parseFloat(numberStorage[1]);
-
-    // console.log(num1, operationsStorage[0], num2);
-
-    result = operationsObject[operationsStorage[0]](num1, num2);
-    operationsStorage.shift();
-    numberStorage.shift();
-    numberStorage[0] = result;
-
-  }
-*/
-
-    for (i = 0; i < storage.length; i++) {
-      if (storage[i] === "*" || storage[i] === "/") {
-        var num1 = parseFloat(storage[i-1]);
-        var num2 = parseFloat(storage[i+1]);
-        placeholder = operationsObject[storage[i]](num1, num2);
-        storage[i-1] = "";
-        storage[i] ="";
-        storage[i+1] = placeholder;
-        //storage.splice(i, 2);
-        console.log(storage);
-      }
-    }
-
-    storage = storage.filter(v => v != "");
-    console.log(storage);
+  exponents(storage);
+  multiply_divide(storage);
+  addition_subtraction(storage);
 
 
-    for (j = 0; j < storage.length; j++) {
-      if (storage[j] === "+" || storage[j] === "-") {
-        var num1 = parseFloat(storage[j-1]);
-        var num2 = parseFloat(storage[j+1]);
-        placeholder2 = operationsObject[storage[j]](num1, num2);
-        storage[j-1] = "";
-        storage[j] ="";
-        storage[j+1] = placeholder2;
-        console.log(storage);
-      }
-    }
-
-    storage = storage.filter(v => v != "");
-    console.log(storage);
-
+  console.log(storage);
   result = storage[0];
-
   console.log(result);
   displayNumbers = [];
   display.value = result;
@@ -150,6 +164,9 @@ equal.addEventListener("click", function(event){
   operationsStorage = [];
   storage = [];
 })
+
+
+
 
 //end of calculation
 
