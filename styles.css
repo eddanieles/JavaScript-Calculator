@@ -1,4 +1,6 @@
 div {
+  background-color: #3F3D37;
+  padding: 25px;
   max-width: 250px;
   max-height: 300px;
 }
@@ -10,21 +12,23 @@ p {
 
 p input {
   flex: 1 1 0;
-  background-color: darkgray;
-  color: white;
+  background-color: #D0EBD1;
+  color: black;
+  font-family: monospace;
   height: 50px;
   text-align: right;
-  font-size: 250%
+  font-size: 250%;
+  margin-bottom: 10px;
 }
 
 p button {
   flex: 1 1 0;
   height: 50px;
-  background-color: gainsboro;
+  background-color: #F3F7F7;
   border-radius: 5px;
 }
 
 .orangeButtons {
-  background-color: orange;
+  background-color: #3332BD;
   color: white;
 }
