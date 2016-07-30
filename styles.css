@@ -1,34 +1,50 @@
 div {
-  background-color: #3F3D37;
-  padding: 25px;
   max-width: 250px;
-  max-height: 300px;
+  max-height: 350px;
+  background-color: lightgray;
+  border-radius: 8px;
 }
 
 p {
   display: flex;
-  margin: 0px;
+  margin: 0;
 }
 
 p input {
   flex: 1 1 0;
-  background-color: #D0EBD1;
-  color: black;
-  font-family: monospace;
+  background-color: gray;
+  color: white;
+  font-weight: lighter;
   height: 50px;
+  max-height: 50px;
   text-align: right;
   font-size: 250%;
-  margin-bottom: 10px;
+  max-width: 250px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 p button {
   flex: 1 1 0;
   height: 50px;
-  background-color: #F3F7F7;
-  border-radius: 5px;
+  background-color: lightgray;
+  padding: 0;
+  border: 1px solid darkgray;
+}
+
+.numberButton {
+  background-color: #F2EFF0;
 }
 
 .orangeButtons {
-  background-color: #3332BD;
+  background-color: orange;
   color: white;
+}
+
+#zero {
+  border-bottom-left-radius: 5px;
+}
+
+#equal {
+  border-bottom-right-radius: 5px;
 }
