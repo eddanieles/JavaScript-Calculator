@@ -64,8 +64,8 @@ function operationsLister(operation) {
     storage.push(display.value);
     displayNumbers = [];
     putOperationsInto(operation);
-    console.log(numberStorage);
-    console.log(operationsStorage);
+/*    console.log(numberStorage); put numbers and operations into one storage
+      console.log(operationsStorage); */
     console.log(storage);
   }
 }
