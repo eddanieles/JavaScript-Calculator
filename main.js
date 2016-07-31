@@ -165,7 +165,15 @@ equal.addEventListener("click", function(event){
   storage = [];
 })
 
+var plusMinus = document.querySelector("#plusMinus");
+plusMinus.addEventListener("click", function(event){
+  display.value = -(display.value);
+})
 
+var percent = document.querySelector("#percent");
+percent.addEventListener("click", function(event){
+  display.value = display.value * .01;
+})
 
 
 //end of calculation
